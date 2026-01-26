@@ -1,32 +1,10 @@
 <template>
   <v-container class="justify-center d-flex">
     <v-card width="600" class="pa-6">
-      <h2 class="text-h5 mb-6 d-flex align-center">
-        <v-icon icon="mdi-upload" color="primary" class="mr-3"></v-icon>
-        Загрузка решения
-      </h2>
-
-      <v-select 
-        v-model="selectedVariant" 
-        :items="variants" 
-        item-title="description" 
-        item-value="id"
-        label="Выберите вариант задания"
-        prepend-inner-icon="mdi-format-list-bulleted"
-      ></v-select>
-      
-      <v-textarea 
-        v-model="content" 
-        label="Текст решения или ссылка на GitHub"
-        prepend-inner-icon="mdi-link"
-        rows="5"
-        hint="Убедитесь, что репозиторий открыт"
-        persistent-hint
-      ></v-textarea>
-      
-      <v-btn block color="primary" size="large" class="mt-6" @click="submitWork">
-        Отправить на проверку
-      </v-btn>
+      <h2 class="text-h5 mb-6"><v-icon icon="mdi-upload" color="primary" class="mr-2"></v-icon>Сдать работу</h2>
+      <v-select v-model="selectedVariant" :items="variants" item-title="description" item-value="id" label="Вариант"></v-select>
+      <v-textarea v-model="content" label="Ссылка на решение" rows="4"></v-textarea>
+      <v-btn block color="primary" size="large" class="mt-6" @click="submitWork">Отправить</v-btn>
     </v-card>
   </v-container>
 </template>
@@ -34,7 +12,7 @@
 <script>
 import axios from 'axios';
 export default {
-  data: () => ({ variants: [{id: 1, description: "Вариант №1 (Основной)"}], selectedVariant: null, content: '' }),
+  data: () => ({ variants: [{id: 1, description: "Вариант №1"}], selectedVariant: null, content: '' }),
   methods: {
     async submitWork() {
       const token = localStorage.getItem('auth_token');
@@ -43,10 +21,8 @@ export default {
           { variant: this.selectedVariant, content: this.content },
           { headers: { Authorization: `Token ${token}` } }
         );
-        alert('Работа успешно отправлена!');
-      } catch (e) {
-        alert('Ошибка при отправке');
-      }
+        alert('Сдано!');
+      } catch (e) { alert('Ошибка'); }
     }
   }
 }

@@ -9,19 +9,19 @@ import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'
 import '@mdi/font/css/materialdesignicons.css'
 
+
 import Login from './components/Login.vue'
 import Assignments from './components/Assignments.vue'
 import Submission from './components/Submission.vue'
 import Reviews from './components/Reviews.vue'
 
-
 const eduDarkTheme = {
   dark: true,
   colors: {
-    background: '#121212', 
-    surface: '#1E1E1E',    
+    background: '#121212',
+    surface: '#1E1E1E',
     primary: '#10B981',    
-    secondary: '#3B82F6',  
+    secondary: '#3B82F6',
     error: '#EF4444',
   }
 }
@@ -31,12 +31,9 @@ const vuetify = createVuetify({
   directives,
   theme: {
     defaultTheme: 'eduDarkTheme',
-    themes: {
-      eduDarkTheme,
-    },
+    themes: { eduDarkTheme },
   },
   defaults: {
-
     VCard: { rounded: 'lg', elevation: 2 },
     VBtn: { rounded: 'lg', height: 44, fontWeight: '600' },
     VTextField: { variant: 'outlined', density: 'comfortable', color: 'primary' },

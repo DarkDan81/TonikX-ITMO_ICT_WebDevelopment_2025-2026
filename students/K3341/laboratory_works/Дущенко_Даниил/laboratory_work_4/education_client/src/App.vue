@@ -6,10 +6,7 @@
         <v-toolbar-title class="font-weight-bold text-h6">
           ITMO<span class="text-primary">.Edu</span>
         </v-toolbar-title>
-
         <v-spacer></v-spacer>
-
-        <!-- Меню (скрываем на мобильных, но для лабы сойдет) -->
         <div class="d-flex ga-2">
           <v-btn to="/assignments" variant="text">Задания</v-btn>
           <v-btn to="/submit" variant="text">Сдать работу</v-btn>
@@ -23,11 +20,7 @@
 
     <v-main class="bg-background">
       <v-container class="py-10">
-        <router-view v-slot="{ Component }">
-          <transition name="fade" mode="out-in">
-            <component :is="Component" />
-          </transition>
-        </router-view>
+        <router-view></router-view>
       </v-container>
     </v-main>
   </v-app>
@@ -45,14 +38,5 @@ export default {
 </script>
 
 <style>
-/* Плавная анимация переходов */
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 0.2s ease;
-}
-.fade-enter-from, .fade-leave-to {
-  opacity: 0;
-}
-.border-b {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-}
+.border-b { border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important; }
 </style>
