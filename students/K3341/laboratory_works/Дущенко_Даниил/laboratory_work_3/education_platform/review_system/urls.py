@@ -4,7 +4,7 @@ from .views import AssignmentViewSet, SubmissionViewSet, PeerReviewViewSet
 
 router = DefaultRouter()
 router.register(r'assignments', AssignmentViewSet)
-router.register(r'submissions', SubmissionViewSet)
+router.register(r'submissions', SubmissionViewSet, basename='submission')
 router.register(r'reviews', PeerReviewViewSet)
 
 urlpatterns = [

@@ -27,6 +27,11 @@ class SubmissionSerializer(serializers.ModelSerializer):
         model = Submission
         fields = '__all__'
         read_only_fields = ['student'] 
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        if instance.variant:
+            representation['variant'] = VariantSerializer(instance.variant).data
+        return representation
 
 
 class PeerReviewSerializer(serializers.ModelSerializer):

@@ -5,13 +5,37 @@
         <v-avatar color="primary" size="64" class="mb-4">
           <v-icon icon="mdi-account-lock" color="white" size="32"></v-icon>
         </v-avatar>
-        <h2 class="text-h5 font-weight-bold">Вход</h2>
+        <h2 class="text-h5 font-weight-bold">Вход в систему</h2>
       </div>
+
       <v-form @submit.prevent="login">
-        <v-text-field v-model="username" label="Логин" prepend-inner-icon="mdi-account"></v-text-field>
-        <v-text-field v-model="password" label="Пароль" type="password" prepend-inner-icon="mdi-lock"></v-text-field>
-        <v-btn block color="primary" size="large" type="submit" class="mt-4">Войти</v-btn>
+        <v-text-field 
+          v-model="username" 
+          label="Логин" 
+          prepend-inner-icon="mdi-account"
+          variant="outlined"
+        ></v-text-field>
+        
+        <v-text-field 
+          v-model="password" 
+          label="Пароль" 
+          type="password" 
+          prepend-inner-icon="mdi-lock"
+          variant="outlined"
+        ></v-text-field>
+        
+        <v-btn block color="primary" size="large" type="submit" class="mt-2">
+          Войти
+        </v-btn>
       </v-form>
+
+      <!-- ССЫЛКА НА РЕГИСТРАЦИЮ -->
+      <div class="text-center mt-6">
+        <span class="text-medium-emphasis">Нет аккаунта? </span>
+        <router-link to="/register" class="text-primary font-weight-bold text-decoration-none">
+          Зарегистрироваться
+        </router-link>
+      </div>
     </v-card>
   </v-container>
 </template>
@@ -29,7 +53,9 @@ export default {
         });
         localStorage.setItem('auth_token', response.data.auth_token);
         this.$router.push('/assignments');
-      } catch (e) { alert('Ошибка входа'); }
+      } catch (e) {
+        alert('Неверный логин или пароль');
+      }
     }
   }
 }

@@ -14,6 +14,9 @@ import Login from './components/Login.vue'
 import Assignments from './components/Assignments.vue'
 import Submission from './components/Submission.vue'
 import Reviews from './components/Reviews.vue'
+import TeacherDashboard from './components/TeacherDashboard.vue'
+import Register from './components/Register.vue'
+import Profile from './components/Profile.vue'
 
 const eduDarkTheme = {
   dark: true,
@@ -46,9 +49,12 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: '/', component: Login },
+    { path: '/register', component: Register },
+    { path: '/profile', component: Profile }, 
     { path: '/assignments', component: Assignments },
     { path: '/submit', component: Submission },
     { path: '/reviews', component: Reviews },
+    { path: '/dashboard', component: TeacherDashboard },
   ]
 })
 
